@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Queue
+{
+    namespace Queue
+    {
+
+        public class Queue<Number>
+        {
+            private List<Number> _number = new List<Number>();
+            public int Count => _number.Count;
+
+            public void ChoosePopNum(ref int _ChoosenNum)
+            {
+                Console.WriteLine("Выбирите позицию элемента");
+                _ChoosenNum = int.Parse(Console.ReadLine());
+            }
+
+            public void Push(Number _Num, ref int _ChoosenNum)
+            {
+                if (_ChoosenNum > _number.Count)
+                {
+                    Console.WriteLine("Введите число");
+                }
+                else
+                {
+                    var Last_Num = _number[_number.Count - _ChoosenNum];
+                }
+                _number.Insert(_ChoosenNum,_Num);
+            }
+
+            public Number Top()
+            {
+                var _Num = GetFirsNumber();
+                return _Num;
+            }
+
+            public void Pop(Number _Num)
+            {
+                 //_Num.RemoveAt(0);
+
+            }
+
+            private Number GetFirsNumber()
+            {
+                var _FirsNum = _number.FirstOrDefault();
+
+                if (_FirsNum == null)
+                {
+                    Console.WriteLine("В очереди нет элементов");
+                }
+                return _FirsNum;
+            }
+       
+        }
+    }
+}

@@ -4,58 +4,57 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Queue
+namespace ConsoleApp2
 {
-    namespace Queue
+    class Queue
     {
-
-        public class Queue<Number>
+        public int size;
+        private Node back;
+        public int count { get; private set; }
+        private int result;
+        public Queue(int inputSize)
         {
-            private List<Number> _number = new List<Number>();
-            public int Count => _number.Count;
-
-            public void ChoosePopNum(ref int _ChoosenNum)
+            this.size = inputSize;
+        }
+        public int Top()
+        {
+            return back.GetForvardValue();
+        }
+        public int Pop()
+        {
+            result = back.GetForvardValue();
+            back.DeleteForwardNode();
+            count--;
+            return result;
+        }
+        public void GetQueue(){ back.GetNode(); }
+        public bool IsEmpty() { return back == null; }
+        public int CountNodes() { return count; }
+        public void Push(int inputPushNode)
+        {
+            if (count==0)
             {
-                Console.WriteLine("Выбирите позицию элемента");
-                _ChoosenNum = int.Parse(Console.ReadLine());
+                back = new Node(inputPushNode);
             }
-
-            public void Push(Number _Num, ref int _ChoosenNum)
+            else if (count < size)
             {
-                if (_ChoosenNum > _number.Count)
-                {
-                    Console.WriteLine("Введите число");
-                }
-                else
-                {
-                    var Last_Num = _number[_number.Count - _ChoosenNum];
-                }
-                _number.Insert(_ChoosenNum,_Num);
+                back.AddValue(inputPushNode);
             }
-
-            public Number Top()
+            else if (count==size)
             {
-                var _Num = GetFirsNumber();
-                return _Num;
+                back.ChangeNodes(inputPushNode);
+                count--;
             }
-
-            public void Pop(Number _Num)
-            {
-                 //_Num.RemoveAt(0);
-
-            }
-
-            private Number GetFirsNumber()
-            {
-                var _FirsNum = _number.FirstOrDefault();
-
-                if (_FirsNum == null)
-                {
-                    Console.WriteLine("В очереди нет элементов");
-                }
-                return _FirsNum;
-            }
-       
+            count++;
+        }
+        public bool SearchNode(int inputSearchNode)
+        {
+            return back.SearchValue(inputSearchNode);
+        }
+        public int GetBackValue() { return back.value; }
+        public override string ToString()
+        {
+            return $"{back.value}";
         }
     }
 }

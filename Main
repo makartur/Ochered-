@@ -4,27 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp79
+namespace ConsoleApp2
 {
     class Program
     {
         static void Main(string[] args)
         {
-            
-            var queue = new Queue<int>();
-
-            queue.Enqueue(1);   
-            queue.Enqueue(7);
-            queue.Enqueue(42);
-            queue.Enqueue(69);
-            queue.Enqueue(-17);
-            Console.WriteLine($" В очереди {queue.Count} элементов.");
-
-
-            var _Num = queue.Top();
-            Console.WriteLine($"Первый элемент {_Num}.");
-
-            Console.ReadLine();
+            Queue a = new Queue(3);
+            a.Push(4);
+            a.Push(5);
+            a.Push(6);
+            a.Push(7);
+            Console.WriteLine(a.Pop());
+            a.GetQueue();
+            Console.ReadKey();
         }
     }
 }
